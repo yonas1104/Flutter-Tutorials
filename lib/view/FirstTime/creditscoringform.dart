@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/App/notcomputed.dart';
 import 'package:ligmone/view/FirstTime/components/dropdownbuttons.dart';
@@ -85,6 +86,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     Future.delayed(Duration.zero, () {
       if (firstinstall == "no") {
         return showdialog(context);
@@ -118,7 +120,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
         ),
         body: Container(
           alignment: Alignment.topCenter,
-          height: Get.height,
+          height: SizeConfig.blockSizeVertical * 100,
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -172,7 +174,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                         });
                       },
                       hint: "Status of checking account",
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       selected: selectedStatus,
                       dropdownvalue: statusOfCheckingAccount,
                     ),
@@ -183,7 +185,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                         });
                       },
                       hint: "Credit History",
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       selected: selectedcreditHistory,
                       dropdownvalue: creditHistory,
                     ),
@@ -197,13 +199,13 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                               selecteddurationInAMonth = newvalue;
                             });
                           },
-                          width: Get.width * 0.47,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           //   margin: 33,
                           selected: selecteddurationInAMonth,
                           dropdownvalue: durationInAMonth,
                         ),
                         SizedBox(
-                          width: 12,
+                          width: SizeConfig.blockSizeHorizontal * 5,
                         ),
                         DropDownButtons(
                           hint: "Purpose",
@@ -214,7 +216,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                           },
                           // margin: 33,
                           selected: selectedPurpose,
-                          width: Get.width * 0.33,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           dropdownvalue: purpose,
                         ),
                       ],
@@ -238,17 +240,20 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                     CreditScoringTextField(
                       title: "Status",
                       marginleft: 15,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       subtitle: "Credit Amount",
                       hint: "0.0",
                     ),
                     CreditScoringTextField(
                       //    title: "Status",
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       margintopvalue: 15,
                       hint: "Savings account and bonds",
                     ),
                     CreditScoringTextField(
                         subtitle: "Employment",
                         hint: "Since",
+                        width: SizeConfig.blockSizeHorizontal * 80,
                         initialValue: datepicked,
                         onTap: () async {
                           DateTime picked = await showDatePicker(
@@ -273,7 +278,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                     CreditScoringTextField(
                       //    title: "Status",
                       margintopvalue: 15,
-
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       hint: "Job",
                     ),
                     CreditScoringTextField(
@@ -281,6 +286,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       subtitle:
                           "Installment rate in percentage of disposable income",
                       hint: "",
+                      width: SizeConfig.blockSizeHorizontal * 80,
                     ),
                     DropDownButtons(
                       margintop: false,
@@ -291,13 +297,14 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       },
                       // marginleft: 15,
                       title: "Personal status and sex",
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       hint: " ",
                       selected: selectedStatus,
                       dropdownvalue: statusOfCheckingAccount,
                     ),
                     CreditScoringTextField(
                       marginleft: 15,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       subtitle: "Other debtors or guarantors",
                       hint: "",
                     ),
@@ -326,7 +333,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       },
                       title: "Collateral",
                       hint: "Property",
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       selected: selectedStatus,
                       dropdownvalue: statusOfCheckingAccount,
                     ),
@@ -339,7 +346,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       },
                       // margin: 33,
                       selected: selectedPurpose,
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       dropdownvalue: purpose,
                     ),
                     Row(
@@ -352,13 +359,13 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                               selecteddurationInAMonth = newvalue;
                             });
                           },
-                          width: Get.width * 0.47,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           //   margin: 33,
                           selected: selecteddurationInAMonth,
                           dropdownvalue: durationInAMonth,
                         ),
                         SizedBox(
-                          width: 12,
+                          width: SizeConfig.blockSizeHorizontal * 5,
                         ),
                         DropDownButtons(
                           hint: "Housing",
@@ -369,7 +376,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                           },
                           // margin: 33,
                           selected: selectedPurpose,
-                          width: Get.width * 0.33,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           dropdownvalue: purpose,
                         ),
                       ],
@@ -383,7 +390,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       },
                       // margin: 33,
                       selected: selectedPurpose,
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       dropdownvalue: purpose,
                     ),
                     Row(
@@ -396,13 +403,14 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                               selecteddurationInAMonth = newvalue;
                             });
                           },
-                          width: Get.width * 0.47,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           //   margin: 33,
+                          margin: 20,
                           selected: selecteddurationInAMonth,
                           dropdownvalue: durationInAMonth,
                         ),
                         SizedBox(
-                          width: 12,
+                          width: SizeConfig.blockSizeHorizontal * 5,
                         ),
                         DropDownButtons(
                           hint: "Telephone",
@@ -413,7 +421,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                           },
                           // margin: 33,
                           selected: selectedPurpose,
-                          width: Get.width * 0.33,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           dropdownvalue: purpose,
                         ),
                       ],
@@ -427,7 +435,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       },
                       // margin: 33,
                       selected: selectedPurpose,
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       dropdownvalue: purpose,
                     ),
                     DropDownButtons(
@@ -440,7 +448,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       title:
                           "Number of people being liable to provide maintenance for",
                       hint: "1",
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       selected: selectedStatus,
                       dropdownvalue: statusOfCheckingAccount,
                     ),

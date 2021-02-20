@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+import '../../../SizeConfig.dart';
+
 class UpdatedPolices extends StatelessWidget {
   String title;
 
@@ -11,8 +13,9 @@ class UpdatedPolices extends StatelessWidget {
   UpdatedPolices({this.title, this.description, this.index});
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
-        width: 300,
+        width: SizeConfig.blockSizeHorizontal * 50,
         alignment: Alignment.center,
         margin: EdgeInsets.all(10).copyWith(left: 20),
         decoration: BoxDecoration(
@@ -33,23 +36,25 @@ class UpdatedPolices extends StatelessWidget {
               height: 100,
             ),
             Container(
-              width: 240,
+              width: SizeConfig.blockSizeHorizontal * 40,
               alignment: Alignment.center,
               // margin: EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                 ),
               ),
             ),
             Container(
-              width: 240,
+              width: SizeConfig.blockSizeHorizontal * 40,
               alignment: Alignment.center,
               // margin: EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 description,
-                style: TextStyle(fontSize: 12, color: CustomColors.lightgray3),
+                style: TextStyle(
+                    fontSize: SizeConfig.blockSizeHorizontal * 3,
+                    color: CustomColors.lightgray3),
               ),
             ),
           ],

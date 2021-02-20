@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
 class Carousel extends StatefulWidget {
@@ -26,6 +27,7 @@ class _CarouselState extends State<Carousel> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Center(
       child: Container(
         alignment: Alignment.center,
@@ -43,8 +45,8 @@ class _CarouselState extends State<Carousel> {
               bottomLeft: Radius.circular(40),
               bottomRight: Radius.circular(50),
             )),
-        width: Get.width * 0.85,
-        height: 400,
+        width: SizeConfig.blockSizeHorizontal * 80,
+        height: SizeConfig.blockSizeVertical * 50,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

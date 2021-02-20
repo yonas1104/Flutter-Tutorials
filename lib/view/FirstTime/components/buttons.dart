@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
 class Buttons extends StatelessWidget {
@@ -18,10 +19,11 @@ class Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.only(bottom: 30),
       width: Get.width * 0.1,
-      height: 50,
+      height: SizeConfig.blockSizeVertical * 5.5,
       child: RaisedButton(
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
@@ -31,7 +33,7 @@ class Buttons extends StatelessWidget {
           child,
           style: TextStyle(
             color: !isSelected ? CustomColors.blue : CustomColors.white,
-            fontSize: 16,
+            fontSize: SizeConfig.blockSizeHorizontal * 2.5,
           ),
         ),
       ),

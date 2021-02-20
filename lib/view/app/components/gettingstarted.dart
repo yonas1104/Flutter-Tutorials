@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/app/components/Guage.dart';
 
+import '../../../SizeConfig.dart';
+
 class GettingStarted extends StatelessWidget {
   String title;
 
@@ -13,8 +15,9 @@ class GettingStarted extends StatelessWidget {
   GettingStarted({this.title, this.description, this.index});
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
-        width: 300,
+        width: SizeConfig.blockSizeHorizontal * 50,
         alignment: Alignment.center,
         margin: EdgeInsets.all(10).copyWith(left: 20),
         decoration: BoxDecoration(
@@ -41,21 +44,28 @@ class GettingStarted extends StatelessWidget {
                     textsize2: 10,
                   )
                 : Container(
-                    height: 150,
+                    height: SizeConfig.blockSizeVertical * 10,
                     width: 0,
                   ),
             Container(
-              margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              margin: EdgeInsets.only(
+                left: 10,
+                right: 10,
+                bottom: SizeConfig.blockSizeHorizontal * 2,
+              ),
               child: Text(
                 title,
-                style: TextStyle(fontSize: 22),
+                style:
+                    TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5),
               ),
             ),
             Container(
               margin: EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 description,
-                style: TextStyle(fontSize: 15, color: CustomColors.lightgray3),
+                style: TextStyle(
+                    fontSize: SizeConfig.blockSizeHorizontal * 2,
+                    color: CustomColors.lightgray3),
               ),
             ),
           ],

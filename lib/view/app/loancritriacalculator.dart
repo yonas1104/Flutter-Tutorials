@@ -5,6 +5,7 @@ import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/FirstTime/components/dropdownbuttons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../SizeConfig.dart';
 import '../alertdialog.dart';
 import '../alertdialog.dart';
 import '../creditscoringtextfield.dart';
@@ -86,6 +87,7 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     Future.delayed(Duration.zero, () {
       if (firstinstall == "no") {
         return showdialog(context);
@@ -125,7 +127,7 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
                   end: Alignment.bottomCenter,
                   colors: [CustomColors.white, CustomColors.homebackground])),
           alignment: Alignment.topCenter,
-          height: Get.height,
+          height: SizeConfig.blockSizeVertical * 100,
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -186,7 +188,7 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
                         });
                       },
                       hint: "Choose loan type",
-                      width: Get.width * 0.85,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       selected: selectedStatus,
                       dropdownvalue: statusOfCheckingAccount,
                     ),
@@ -217,6 +219,7 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
                         )),
                     CreditScoringTextField(
                       marginleft: 10,
+                      width: SizeConfig.blockSizeHorizontal * 80,
                       // title: "Equity Contribution",
                       subtitle: "How much are you requesting",
                       hint: "0.0",
@@ -233,15 +236,15 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
                           // title: "Equity Contribution",
                           subtitle: "Bank Contribution",
                           hint: "0.0",
-                          width: 160,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           margintop: true,
                         ),
                         SizedBox(
-                          width: 12,
+                          width: SizeConfig.blockSizeHorizontal * 5,
                         ),
                         CreditScoringTextField(
                           marginleft: 100,
-                          width: 160,
+                          width: SizeConfig.blockSizeHorizontal * 37.5,
                           subtitle: " ",
                           hint: "0.0",
                           margintop: true,

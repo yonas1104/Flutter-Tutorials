@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/FirstTime/creditscoringform.dart';
 import 'package:ligmone/view/firstTime/components/buttons.dart';
@@ -37,6 +38,7 @@ class _RegistrationSuccessState extends State<RegistrationSuccess> {
   bool isSelected4 = false;
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -44,7 +46,7 @@ class _RegistrationSuccessState extends State<RegistrationSuccess> {
             child: Container(
               color: CustomColors.blue,
               height: 400,
-              width: 500,
+              width: SizeConfig.blockSizeHorizontal * 100,
             ),
           ),
           Container(
@@ -61,16 +63,16 @@ class _RegistrationSuccessState extends State<RegistrationSuccess> {
             ),
           ),
           Positioned(
-            left: MediaQuery.of(context).size.width * 0.14,
-            top: Get.height * 0.30,
+            left: SizeConfig.blockSizeHorizontal * 5,
+            top: Get.height * 0.37,
             child: Container(
-              width: Get.width * 0.80,
+              width: SizeConfig.blockSizeHorizontal * 90,
               height: Get.height,
               child: ListView.builder(
                   itemCount: name.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      width: 10,
+                      // width: 1,
                       child: Buttons(
                         child: name[index],
                         isSelected: selectedElementList.contains(name[index]),
@@ -89,27 +91,31 @@ class _RegistrationSuccessState extends State<RegistrationSuccess> {
           ),
           Positioned(
             top: 100,
-            left: 60,
+            left: SizeConfig.blockSizeHorizontal * 32,
             child: Text(
               "Let's help you get started",
-              style: TextStyle(fontSize: 25, color: Colors.white),
+              style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 4,
+                  color: Colors.white),
             ),
           ),
           Positioned(
             top: 150,
-            left: 100,
+            left: SizeConfig.blockSizeHorizontal * 39,
             child: Text(
               "What are you looking for?",
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 2.5,
+                  color: Colors.white),
             ),
           ),
           Positioned(
             bottom: 50,
-            left: MediaQuery.of(context).size.width * 0.13,
+            left: SizeConfig.blockSizeHorizontal * 5,
             child: Container(
               margin: EdgeInsets.only(top: 30),
-              width: Get.width * 0.85,
-              height: 50,
+              width: SizeConfig.blockSizeHorizontal * 90,
+              height: SizeConfig.blockSizeVertical * 6,
               child: RaisedButton(
                 disabledColor: CustomColors.lightgray3,
                 shape: RoundedRectangleBorder(

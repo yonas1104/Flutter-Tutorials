@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
 class TypesOfLoan extends StatelessWidget {
@@ -8,8 +9,10 @@ class TypesOfLoan extends StatelessWidget {
   TypesOfLoan({this.imagepath, this.type, title, description});
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
-        width: 110,
+        width: SizeConfig.blockSizeHorizontal * 25,
+        height: 1,
         alignment: Alignment.center,
         margin: EdgeInsets.all(10).copyWith(left: 20),
         decoration: BoxDecoration(
@@ -37,7 +40,8 @@ class TypesOfLoan extends StatelessWidget {
               margin: EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 type,
-                style: TextStyle(fontSize: 12),
+                style:
+                    TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 2.5),
               ),
             ),
           ],

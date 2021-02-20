@@ -2,6 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/app/components/Guage.dart';
 import 'package:ligmone/view/app/components/bankcampiagns.dart';
@@ -68,6 +69,7 @@ class _NotComputedState extends State<NotComputed>
   ];
 
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: _currentIndex == 0
           ? AppBar(
@@ -105,7 +107,7 @@ class _NotComputedState extends State<NotComputed>
                       Container(
                         margin: EdgeInsets.only(
                             top: 50, bottom: 20, left: 50, right: 50),
-                        width: Get.width * 0.7,
+                        width: SizeConfig.blockSizeHorizontal * 70,
                         height: 60,
                         child: RaisedButton(
                           disabledColor: CustomColors.lightgray3,
@@ -131,12 +133,14 @@ class _NotComputedState extends State<NotComputed>
                             top: 0, left: 20, bottom: 30, right: 49),
                         child: Text(
                           "Calculate your credit score and know your the servicesthat are available to you. Take our word for it, it will surprise you. ",
-                          style: TextStyle(color: CustomColors.lightgray3),
+                          style: TextStyle(
+                              color: CustomColors.lightgray3,
+                              fontSize: SizeConfig.blockSizeHorizontal * 2.5),
                         ),
                       ),
                       Container(
-                        margin:
-                            EdgeInsets.only(top: 10, right: 250, bottom: 10),
+                        //alignment: Alignment.center,
+                        margin: EdgeInsets.only(top: 10, bottom: 10),
                         child: Text(
                           "Take Action",
                           style: TextStyle(fontSize: 25),
@@ -144,8 +148,9 @@ class _NotComputedState extends State<NotComputed>
                       ),
 
                       Container(
-                        alignment: Alignment.center,
-                        height: 150,
+                        //   margin: EdgeInsets.only(left: ),
+                        //     alignment: Alignment.center,
+                        height: SizeConfig.blockSizeVertical * 20,
                         child: ListView.builder(
                             itemCount: 4,
                             clipBehavior: Clip.none,
@@ -159,15 +164,14 @@ class _NotComputedState extends State<NotComputed>
                       ),
 
                       Container(
-                        margin:
-                            EdgeInsets.only(top: 10, right: 100, bottom: 40),
+                        margin: EdgeInsets.only(top: 10, bottom: 40),
                         child: Text(
                           "Important articles for you",
                           style: TextStyle(fontSize: 25),
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 0, right: 260, bottom: 10),
+                        margin: EdgeInsets.only(top: 0, bottom: 10),
                         child: Text(
                           "Geting started",
                           style: TextStyle(fontSize: 17),
@@ -175,7 +179,7 @@ class _NotComputedState extends State<NotComputed>
                       ),
                       Container(
                         // alignment: Alignment.center,
-                        height: 300,
+                        height: SizeConfig.blockSizeHorizontal * 50,
                         child: ListView.builder(
                             itemCount: 2,
                             clipBehavior: Clip.none,
@@ -189,8 +193,7 @@ class _NotComputedState extends State<NotComputed>
                             }),
                       ),
                       Container(
-                        margin:
-                            EdgeInsets.only(top: 20, right: 260, bottom: 20),
+                        margin: EdgeInsets.only(top: 20, bottom: 20),
                         child: Text(
                           "Bank Campaigns",
                           style: TextStyle(fontSize: 17),
@@ -198,7 +201,7 @@ class _NotComputedState extends State<NotComputed>
                       ),
                       Container(
                         // alignment: Alignment.center,
-                        height: 300,
+                        height: SizeConfig.blockSizeHorizontal * 50,
                         child: ListView.builder(
                             itemCount: 2,
                             clipBehavior: Clip.none,
@@ -219,7 +222,7 @@ class _NotComputedState extends State<NotComputed>
                       ),
                       Container(
                         // alignment: Alignment.center,
-                        height: 300,
+                        height: SizeConfig.blockSizeHorizontal * 50,
                         child: ListView.builder(
                             itemCount: 2,
                             clipBehavior: Clip.none,

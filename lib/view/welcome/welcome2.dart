@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/Authentication/signup.dart';
 import 'package:ligmone/view/welcome/carousel.dart';
@@ -14,10 +15,11 @@ class Welcome2 extends StatefulWidget {
 class _Welcome2State extends State<Welcome2> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
         child: Scaffold(
       body: Container(
-        margin: EdgeInsets.only(top: 100),
+        margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical * 15),
         child: Column(
           children: [
             Container(
@@ -47,7 +49,8 @@ class _Welcome2State extends State<Welcome2> {
             Carousel(),
             Container(
               margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.04, left: 190),
+                  top: MediaQuery.of(context).size.height * 0.04,
+                  left: SizeConfig.blockSizeHorizontal * 45),
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -57,7 +60,7 @@ class _Welcome2State extends State<Welcome2> {
                   ],
                   color: CustomColors.blue,
                   borderRadius: BorderRadius.circular(50)),
-              width: 140,
+              width: SizeConfig.blockSizeHorizontal * 30,
               height: 60,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(

@@ -6,6 +6,8 @@ import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/app/components/elgibilty.dart';
 import 'package:ligmone/view/app/components/transaction2.dart';
 
+import '../../SizeConfig.dart';
+
 class Transaction extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => TransactionState();
@@ -25,6 +27,7 @@ class TransactionState extends State<Transaction>
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomColors.blue,
@@ -42,7 +45,7 @@ class TransactionState extends State<Transaction>
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        height: Get.height,
+        height: SizeConfig.blockSizeVertical * 100,
         child: Stack(
           children: <Widget>[
             Container(

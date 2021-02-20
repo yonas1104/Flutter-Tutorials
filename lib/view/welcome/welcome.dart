@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/welcome/welcome2.dart';
 
@@ -28,6 +29,7 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -38,16 +40,16 @@ class _WelcomeState extends State<Welcome> {
               AnimatedOpacity(
                 opacity: opacity,
                 onEnd: () {
-                  Get.off(Welcome2());
+                  Get.off(() => Welcome2());
                 },
                 duration: Duration(milliseconds: 1000),
                 child: Container(
-                  margin: EdgeInsets.only(left: 20),
+                  margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal),
                   child: Text(
                     "\"Hi",
                     style: TextStyle(
                         color: CustomColors.blue,
-                        fontSize: 50,
+                        fontSize: SizeConfig.blockSizeHorizontal * 15,
                         fontStyle: FontStyle.italic,
                         fontFamily: "Rockwellr",
                         fontWeight: FontWeight.bold),
@@ -55,9 +57,12 @@ class _WelcomeState extends State<Welcome> {
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: SizeConfig.blockSizeVertical * 12,
               ),
-              SvgPicture.asset("assets/images/welcome.svg")
+              SvgPicture.asset(
+                "assets/images/welcome.svg",
+                height: SizeConfig.blockSizeHorizontal * 100,
+              )
             ],
           ),
         ),

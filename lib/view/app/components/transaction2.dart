@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
 class Transaction2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
-      height: Get.width / 2,
+      height: (SizeConfig.blockSizeVertical * 100) / 5,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
