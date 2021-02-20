@@ -55,9 +55,9 @@ class TransactionState extends State<Transaction>
               ),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.28,
+              top: 200,
               left: 0.0,
-              bottom: MediaQuery.of(context).size.height * 0.42,
+              bottom: MediaQuery.of(context).size.height * 0.32,
               right: 0.0,
 
               // bottom: 0.0,
@@ -171,7 +171,7 @@ class TransactionState extends State<Transaction>
                     }),
               ),
             ),
-            Positioned(top: 480, child: Transaction2()),
+            Positioned(top: 480, left: 50, child: Transaction2()),
             Positioned(
               top: 0,
               child: Container(

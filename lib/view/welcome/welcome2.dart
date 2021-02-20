@@ -47,7 +47,7 @@ class _Welcome2State extends State<Welcome2> {
             Carousel(),
             Container(
               margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.13, left: 190),
+                  top: MediaQuery.of(context).size.height * 0.04, left: 190),
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
