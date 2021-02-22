@@ -5,6 +5,7 @@ import 'package:ligmone/view/app/components/Guage.dart';
 
 import '../../../SizeConfig.dart';
 
+//Getting started represented by cards
 class GettingStarted extends StatelessWidget {
   String title;
 
@@ -17,7 +18,7 @@ class GettingStarted extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-        width: SizeConfig.blockSizeHorizontal * 50,
+        width: SizeConfig.blockSizeHorizontal * 65,
         alignment: Alignment.center,
         margin: EdgeInsets.all(10).copyWith(left: 20),
         decoration: BoxDecoration(
@@ -55,16 +56,16 @@ class GettingStarted extends StatelessWidget {
               ),
               child: Text(
                 title,
-                style:
-                    TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5),
+                style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              //       margin: EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 description,
                 style: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal * 2,
+                    fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                     color: CustomColors.lightgray3),
               ),
             ),

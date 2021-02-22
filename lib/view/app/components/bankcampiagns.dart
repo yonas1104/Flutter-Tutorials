@@ -4,6 +4,7 @@ import 'package:ligmone/constants/Colors.dart';
 import '../../../SizeConfig.dart';
 import 'Guage.dart';
 
+//Bank campaigns represented by cards
 class BankCampaigns extends StatelessWidget {
   String title;
 
@@ -16,7 +17,7 @@ class BankCampaigns extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-        width: SizeConfig.blockSizeHorizontal * 50,
+        width: SizeConfig.blockSizeHorizontal * 65,
         alignment: Alignment.center,
         margin: EdgeInsets.all(10).copyWith(left: 20),
         decoration: BoxDecoration(

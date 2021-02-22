@@ -3,6 +3,7 @@ import 'package:ligmone/constants/Colors.dart';
 
 import '../../../SizeConfig.dart';
 
+//updated policies represented by cards
 class UpdatedPolices extends StatelessWidget {
   String title;
 
@@ -15,45 +16,39 @@ class UpdatedPolices extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-        width: SizeConfig.blockSizeHorizontal * 50,
-        alignment: Alignment.center,
+        width: SizeConfig.blockSizeHorizontal * 65,
         margin: EdgeInsets.all(10).copyWith(left: 20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: Colors.white,
             boxShadow: [
-              BoxShadow(
-                  //  /   spreadRadius: 1,
-                  blurRadius: 20,
-                  //  offset: Offset(10, 5),
-                  color: CustomColors.lightpurple)
+              BoxShadow(blurRadius: 20, color: CustomColors.lightpurple)
             ]),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 100,
+              height: 70,
             ),
             Container(
-              width: SizeConfig.blockSizeHorizontal * 40,
-              alignment: Alignment.center,
-              // margin: EdgeInsets.only(left: 10, right: 10),
+              width: SizeConfig.blockSizeHorizontal * 50,
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                  fontSize: SizeConfig.blockSizeHorizontal * 4,
                 ),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
-              width: SizeConfig.blockSizeHorizontal * 40,
-              alignment: Alignment.center,
+              width: SizeConfig.blockSizeHorizontal * 50,
+              //   alignment: Alignment.center,
               // margin: EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 description,
                 style: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal * 3,
+                    fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                     color: CustomColors.lightgray3),
               ),
             ),

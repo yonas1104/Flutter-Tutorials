@@ -2,22 +2,27 @@ import 'package:flutter/material.dart';
 
 import 'package:ligmone/constants/Colors.dart';
 
+//Custom TextFields with some styling
 class CreditScoringTextField extends StatelessWidget {
+  //These are properties of the custom text fields
   String hint;
   String title;
   String subtitle;
   Widget icon;
+  TextEditingController controller;
   double marginleft;
-  bool margintop;
+  bool margintop; //checks whether a textfield should have margin top or not
   Function onTap;
+  Function onChanged;
   double width;
-  String initialValue;
+
   double margintopvalue;
   CreditScoringTextField(
       {this.hint,
-      this.initialValue,
       this.title,
+      this.onChanged,
       this.subtitle,
+      this.controller,
       this.margintopvalue,
       this.width,
       this.icon,
@@ -29,7 +34,7 @@ class CreditScoringTextField extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          title != null
+          title != null //the code below are for just adjusting margins
               ? Container(
                   margin: EdgeInsets.only(
                       left: marginleft == null ? 40 : marginleft,
@@ -65,17 +70,10 @@ class CreditScoringTextField extends StatelessWidget {
                 color: CustomColors.lightgray,
                 borderRadius: BorderRadius.circular(20)),
             child: TextFormField(
+              controller: controller,
               onTap: onTap,
-
-              initialValue: initialValue == null ? "" : initialValue,
-              // controller: _nameController,
-              // key: _nameFormKey,
-              onChanged: (value) {
-                // setState(() {
-                //   validated = isFormValid();
-                //   _nameFormKey.currentState.validate();
-                // });
-              },
+              enableInteractiveSelection: false,
+              onChanged: onChanged,
               validator: (value) {
                 if (value.length < 1) {
                   return "Please input your name";

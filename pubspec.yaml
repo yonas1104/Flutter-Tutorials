@@ -36,6 +36,7 @@ dependencies:
   fl_chart: ^0.12.2
   responsive_framework: ^0.0.8
   shared_preferences:
+  pinput: ^1.0.0
 
 dev_dependencies:
   flutter_test:

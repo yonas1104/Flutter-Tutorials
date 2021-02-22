@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/FirstTime/components/dropdownbuttons.dart';
+import 'package:ligmone/view/app/notcomputed.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../SizeConfig.dart';
@@ -11,6 +12,7 @@ import '../alertdialog.dart';
 import '../creditscoringtextfield.dart';
 import 'home.dart';
 
+//loan critrea form
 class LoanCriteriaCalculator extends StatefulWidget {
   @override
   _LoanCriteriaCalculatorState createState() => _LoanCriteriaCalculatorState();
@@ -19,25 +21,41 @@ class LoanCriteriaCalculator extends StatefulWidget {
 class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
   @override
   void initState() {
-    check();
-    getSharedPreferenceInstance();
+    checkFirstRun();
     super.initState();
   }
 
   String firstinstall = "no";
-  check() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      firstinstall = preferences.getString("install");
-      print(firstinstall);
-    });
-    print(firstinstall);
+  bool showdialog = false;
+  checkFirstRun() async {
+    //check the app is on first time use to show dialog
+    String firstinstall = "";
+    preferences = await SharedPreferences.getInstance();
+
+    firstinstall = preferences.getString("installedloancr");
+
+    if (firstinstall != "installed") {
+      showdialog = true;
+
+      preferences.setString("installedloancr", "installed");
+    }
   }
 
-  getSharedPreferenceInstance() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-
-    await preferences.setString("install", "yes");
+  tipDialog(context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return CustomAlertDialog(
+            buttontext: "Continue ",
+            description:
+                "Having a good credit score comes with many advantages of having a significant saving on interest rates, getting better deals on loans, insurance discounts and so much more. read more   ",
+            title: "Credit Scoring",
+            imagepath: "assets/images/alert.svg",
+            onPressed: () {
+              Get.back();
+            },
+          );
+        });
   }
 
   List<String> statusOfCheckingAccount = ["Choose loan typet", "two", "three"];
@@ -57,6 +75,7 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
     "12"
   ];
   List<String> purpose = ["Purpose", "two", "three"];
+
   String selectedStatus;
   String selectedcreditHistory;
   String selecteddurationInAMonth;
@@ -68,31 +87,15 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
 
   bool isSelectedBusiness = false;
 
-  void showdialog(context) async {
-    return await showDialog(
-        context: context,
-        builder: (context) {
-          return CustomAlertDialog(
-            buttontext: "Continue ",
-            description:
-                "This section helps you to find the best bank for your loan requirements ",
-            title: "Loan criteria calculator",
-            imagepath: "assets/images/alert2.svg",
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     Future.delayed(Duration.zero, () {
-      if (firstinstall == "no") {
-        return showdialog(context);
-      }
+      if (showdialog) {
+        tipDialog(context);
+      } //show dialog if its first time use
     });
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -112,7 +115,7 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
           leading: IconButton(
               icon: SvgPicture.asset("assets/images/leadingarrowleft.svg"),
               onPressed: () {
-                Navigator.pop(context);
+                Get.to(() => NotComputed());
               }),
           actions: [
             IconButton(
@@ -274,7 +277,6 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
                   ],
                 ),
               ),
-
               Container(
                 margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(15),
@@ -363,35 +365,37 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
                   ],
                 ),
               ),
-              Container(
-                margin:
-                    EdgeInsets.only(top: 30, bottom: 40, left: 50, right: 50),
-                width: Get.width * 0.7,
-                height: 60,
-                child: RaisedButton(
-                  disabledColor: CustomColors.lightgray3,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  color: CustomColors.blue,
-                  onPressed: () {
-                    Get.to(() => Home());
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Calculate",
-                      style: TextStyle(color: CustomColors.white, fontSize: 18),
-                    ),
-                  ),
-                ),
-              ),
-              //  ActionChip(label: Text("asd"), onPressed: () {}),
-              // Chip(
+              // Container(
+              //   margin:
+              //       EdgeInsets.only(top: 30, bottom: 40, left: 50, right: 50),
+              //   width: Get.width * 0.7,
+              //   height: 60,
+              //   child: RaisedButton(
+              //     disabledColor: CustomColors.lightgray3,
               //     shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(2)),
-              //     label:)
+              //         borderRadius: BorderRadius.circular(20)),
+              //     color: CustomColors.blue,
+              //     onPressed: () async {
+              //       preferences = await SharedPreferences.getInstance();
+              //       setState(() {
+              //         preferences.setBool("computed", true);
+              //       });
+
+              //       Get.to(() => NotComputed());
+              //     },
+              //     child: Container(
+              //       alignment: Alignment.center,
+              //       child: Text(
+              //         "Continue",
+              //         style: TextStyle(color: CustomColors.white, fontSize: 18),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ));
   }
+
+  SharedPreferences preferences;
 }

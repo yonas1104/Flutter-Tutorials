@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+//Suggestions
 class Suggesstions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

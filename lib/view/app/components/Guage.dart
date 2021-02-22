@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
+//Guage for calculated credit score
 class Guage extends StatelessWidget {
   double height;
   double markerheight;

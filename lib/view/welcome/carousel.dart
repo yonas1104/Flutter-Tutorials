@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+//this is the carousel class which has some tips about the app
+
 class Carousel extends StatefulWidget {
   @override
   _CarouselState createState() => _CarouselState();
@@ -59,7 +61,7 @@ class _CarouselState extends State<Carousel> {
                       _current = index;
                     });
                   }),
-              items: items
+              items: items //mapping each items to a widget
                   .map((item) => Container(
                         //    padding: EdgeInsets.symmetric(horizontal: 0),
                         child: Column(
@@ -98,6 +100,7 @@ class _CarouselState extends State<Carousel> {
                   .toList(),
             ),
             Row(
+              // this Row widget has the indicators below the carousel slider
               mainAxisAlignment: MainAxisAlignment.center,
               children: items.map((item) {
                 int index = items.indexOf(item);

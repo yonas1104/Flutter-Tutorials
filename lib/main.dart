@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ligmone/view/App/notcomputed.dart';
-import 'package:ligmone/view/FirstTime/creditscoringform.dart';
-import 'package:ligmone/view/app/home.dart';
-import 'package:ligmone/view/app/loancritriacalculator.dart';
+import 'package:ligmone/view/FirstTime/registerationsuccess.dart';
+import 'package:ligmone/view/welcome/welcome.dart';
+import 'view/app/notcomputed.dart' as n;
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'view/alertdialog.dart';
-import 'view/app/transaction.dart';
-import 'view/welcome/welcome.dart';
 
 void main() {
   runApp(MyApp());

@@ -5,6 +5,8 @@ import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/welcome/welcome2.dart';
 
+//this is the very first screen on the app
+
 class Welcome extends StatefulWidget {
   @override
   _WelcomeState createState() => _WelcomeState();
@@ -18,6 +20,7 @@ class _WelcomeState extends State<Welcome> {
     changeOpacity();
   }
 
+  //a method for making smooth animation for the text Hi to change opacity from 0 to 1
   changeOpacity() {
     Future.delayed(Duration(milliseconds: 00), () {
       setState(() {
@@ -49,7 +52,7 @@ class _WelcomeState extends State<Welcome> {
                     "\"Hi",
                     style: TextStyle(
                         color: CustomColors.blue,
-                        fontSize: SizeConfig.blockSizeHorizontal * 15,
+                        fontSize: SizeConfig.blockSizeHorizontal * 10,
                         fontStyle: FontStyle.italic,
                         fontFamily: "Rockwellr",
                         fontWeight: FontWeight.bold),
@@ -61,7 +64,7 @@ class _WelcomeState extends State<Welcome> {
               ),
               SvgPicture.asset(
                 "assets/images/welcome.svg",
-                height: SizeConfig.blockSizeHorizontal * 100,
+                height: 400,
               )
             ],
           ),

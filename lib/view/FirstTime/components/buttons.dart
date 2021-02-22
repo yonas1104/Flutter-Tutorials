@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+//radio buttons of getting started
 class Buttons extends StatelessWidget {
-  String child;
-  Function onPressed;
+  String child; //button text
+  Function onPressed; //onpressed fuction call back
 
   bool isSelected = false;
   Buttons({
@@ -13,9 +14,6 @@ class Buttons extends StatelessWidget {
     this.onPressed,
     this.isSelected,
   });
-  Color x(int i) {
-    if (i == 1) {}
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class Buttons extends StatelessWidget {
           child,
           style: TextStyle(
             color: !isSelected ? CustomColors.blue : CustomColors.white,
-            fontSize: SizeConfig.blockSizeHorizontal * 2.5,
+            fontSize: SizeConfig.blockSizeHorizontal * 3,
           ),
         ),
       ),

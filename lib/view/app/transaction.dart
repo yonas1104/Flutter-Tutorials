@@ -8,7 +8,11 @@ import 'package:ligmone/view/app/components/transaction2.dart';
 
 import '../../SizeConfig.dart';
 
+//Transaction page
+
 class Transaction extends StatefulWidget {
+  Function onPressed;
+  Transaction({this.onPressed});
   @override
   State<StatefulWidget> createState() => TransactionState();
 }
@@ -17,8 +21,6 @@ TabController _tabController;
 
 class TransactionState extends State<Transaction>
     with TickerProviderStateMixin {
-  bool isShowingMainData;
-
   @override
   void initState() {
     _tabController = TabController(length: 12, vsync: this);
@@ -31,6 +33,7 @@ class TransactionState extends State<Transaction>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomColors.blue,
+        leading: Container(),
         elevation: 0,
         title: Text(
           "Credit Score",
@@ -44,13 +47,12 @@ class TransactionState extends State<Transaction>
         ],
       ),
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: SizeConfig.blockSizeVertical * 100,
+        constraints: BoxConstraints.expand(),
         child: Stack(
           children: <Widget>[
             Container(
               height: 370,
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width * 2,
               color: CustomColors.blue,
               child: LineChart(
                 sampleData1(),
@@ -58,15 +60,13 @@ class TransactionState extends State<Transaction>
               ),
             ),
             Positioned(
-              top: 200,
               left: 0.0,
-              bottom: MediaQuery.of(context).size.height * 0.32,
+              top: 270,
               right: 0.0,
 
               // bottom: 0.0,
               child: TabBar(
                   indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorColor: Colors.white,
                   isScrollable: true,
                   indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
@@ -74,84 +74,72 @@ class TransactionState extends State<Transaction>
                   controller: _tabController,
                   tabs: [
                     Tab(
-                      //  text: "ff",
                       child: Text(
                         "Jan",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      //  text: "fcsf",
                       child: Text(
                         "Feb",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Mar",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Apr",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "May",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Jun",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Jul",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Aug",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Sept",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Oct",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Nov",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     Tab(
-                      // text: "fssf",
                       child: Text(
                         "Dec",
                         style: TextStyle(color: Colors.white),
@@ -162,7 +150,6 @@ class TransactionState extends State<Transaction>
             Positioned(
               top: 330,
               child: Container(
-                // alignment: Alignment.center,
                 height: 150,
                 width: 400,
                 child: ListView.builder(

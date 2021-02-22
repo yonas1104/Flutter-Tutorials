@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+// Types of loan represented by cards
+
 class TypesOfLoan extends StatelessWidget {
   String imagepath;
   String type;
@@ -11,7 +13,7 @@ class TypesOfLoan extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-        width: SizeConfig.blockSizeHorizontal * 25,
+        width: SizeConfig.blockSizeHorizontal * 30,
         height: 1,
         alignment: Alignment.center,
         margin: EdgeInsets.all(10).copyWith(left: 20),
@@ -37,11 +39,11 @@ class TypesOfLoan extends StatelessWidget {
               height: 40,
             ),
             Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              //padding: EdgeInsets.all(2),
+              //  margin: EdgeInsets.only(left: 10),
               child: Text(
                 type,
-                style:
-                    TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 2.5),
+                style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3),
               ),
             ),
           ],

@@ -10,9 +10,10 @@ class LocalAuth extends StatefulWidget {
   _LocalAuthState createState() => _LocalAuthState();
 }
 
+//Local auth
 class _LocalAuthState extends State<LocalAuth> {
-  int number = 0;
-  String code = "";
+  int number = 0; //number of items click to show colors on the indicator
+  String code = ""; //code inputed to check code
   @override
   void initState() {
     super.initState();
@@ -20,9 +21,6 @@ class _LocalAuthState extends State<LocalAuth> {
 
   @override
   Widget build(BuildContext context) {
-    // if (number == 4) {
-    //   Get.off(() => RegistrationSuccess());
-    // }
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

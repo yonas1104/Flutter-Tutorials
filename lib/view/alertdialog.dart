@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+//this is Custom alert dialog that will appear on first use of the application
 class CustomAlertDialog extends StatelessWidget {
   String title;
   String description;
@@ -17,6 +19,7 @@ class CustomAlertDialog extends StatelessWidget {
       @required this.title});
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -34,33 +37,34 @@ class CustomAlertDialog extends StatelessWidget {
                 bottomRight: Radius.circular(30)),
             color: Colors.white,
           ),
-          height: Get.height * 0.65,
-          width: Get.width * 0.85,
+          height: SizeConfig.blockSizeVertical * 65,
+          width: SizeConfig.blockSizeHorizontal * 85,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 60,
+                height: SizeConfig.blockSizeVertical,
               ),
               SvgPicture.asset("assets/images/alert.svg"),
               SizedBox(
-                height: 40,
+                height: SizeConfig.blockSizeVertical * 2,
               ),
               Text(title,
                   style: TextStyle(fontSize: 40, color: CustomColors.blue)),
               SizedBox(
-                height: 30,
+                height: SizeConfig.blockSizeVertical * 5,
               ),
               Text(description,
-                  style:
-                      TextStyle(fontSize: 14, color: CustomColors.lightgray3)),
+                  style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                      color: CustomColors.lightgray3)),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 5,
+              ),
               Container(
-                margin: EdgeInsets.only(
-                  top: 40,
-                  bottom: 20,
-                ),
-                width: Get.width * 0.7,
+                alignment: Alignment.center,
+                width: SizeConfig.blockSizeVertical * 70,
                 height: 60,
                 child: RaisedButton(
                   disabledColor: CustomColors.lightgray3,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+//Buttons for local auth
 class NumberButton extends StatelessWidget {
   String number;
   String letters;
@@ -39,7 +40,9 @@ class NumberButton extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: CustomColors.blue),
                   ),
-                  !number.contains("1") && !number.contains("0")
+                  !number.contains("1") &&
+                          !number.contains(
+                              "0") // for number 1 and 0 letter are not displayed so this will check that
                       ? Text(
                           letters,
                           style: TextStyle(

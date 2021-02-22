@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+//bottom part of the Transaction page
 class Transaction2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

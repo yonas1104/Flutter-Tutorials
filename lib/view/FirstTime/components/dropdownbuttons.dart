@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ligmone/constants/Colors.dart';
 
+//Custom drop down buttons with some styling
+
 class DropDownButtons extends StatelessWidget {
+  //these are properties of the custom dropdownbutton
   List<String> dropdownvalue;
   double width;
-  double margin;
+  double marginLeft;
   String hint;
   Function onChanged;
   String selected;
@@ -15,7 +18,7 @@ class DropDownButtons extends StatelessWidget {
       {this.dropdownvalue,
       this.width,
       this.hint,
-      this.margin,
+      this.marginLeft,
       this.onChanged,
       this.selected,
       this.title,
@@ -40,8 +43,8 @@ class DropDownButtons extends StatelessWidget {
           width: width,
           height: 60,
           margin: EdgeInsets.only(bottom: margintop == null ? 30 : 10),
-          padding:
-              EdgeInsets.only(left: margin == null ? 33 : margin, right: 20),
+          padding: EdgeInsets.only(
+              left: marginLeft == null ? 33 : marginLeft, right: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             color: CustomColors.lightgray,
@@ -67,7 +70,7 @@ class DropDownButtons extends StatelessWidget {
                 value: value,
                 child: Container(
                   margin: EdgeInsets.only(
-                    right: margin == null ? 30 : margin,
+                    right: marginLeft == null ? 30 : marginLeft,
                   ),
                   child: Text(
                     value,

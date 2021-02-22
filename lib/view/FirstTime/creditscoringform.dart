@@ -5,10 +5,13 @@ import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/App/notcomputed.dart';
 import 'package:ligmone/view/FirstTime/components/dropdownbuttons.dart';
+import 'package:ligmone/view/app/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../alertdialog.dart';
 import '../creditscoringtextfield.dart';
+
+//Personal information filling form
 
 class CreditScoringForm extends StatefulWidget {
   @override
@@ -16,30 +19,10 @@ class CreditScoringForm extends StatefulWidget {
 }
 
 class _CreditScoringFormState extends State<CreditScoringForm> {
-  @override
-  void initState() {
-    check();
-    getSharedPreferenceInstance();
-    super.initState();
-  }
-
-  String firstinstall = "no";
-  check() async {
-    SharedPreferences preferences;
-    preferences = await SharedPreferences.getInstance();
-
-    setState(() {
-      firstinstall = preferences.getString("installedcredit");
-      print(firstinstall);
-    });
-    print(firstinstall);
-  }
-
-  getSharedPreferenceInstance() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-
-    await preferences.setString("installedcredit", "yes");
-  }
+  SharedPreferences preferences;
+  TextEditingController controller;
+  bool showdialog =
+      false; //bool variable to check if the app is on first install and decide to show
 
   List<String> statusOfCheckingAccount = [
     "Status of existing checking account",
@@ -61,14 +44,29 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
     "10",
     "11",
     "12"
-  ];
+  ]; //duration in a month
   List<String> purpose = ["Purpose", "two", "three"];
   String selectedStatus;
   String selectedcreditHistory;
   String selecteddurationInAMonth;
   String selectedPurpose;
-  void showdialog(context) async {
-    return await showDialog(
+
+  checkFirstRun() async {
+    //check the app is on first time use to show dialog
+    String firstinstall = "";
+    preferences = await SharedPreferences.getInstance();
+
+    firstinstall = preferences.getString("installedcredit");
+
+    if (firstinstall != "installed") {
+      showdialog = true;
+
+      preferences.setString("installedcredit", "installed");
+    }
+  }
+
+  tipDialog(context) {
+    showDialog(
         context: context,
         builder: (context) {
           return CustomAlertDialog(
@@ -78,20 +76,32 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
             title: "Credit Scoring",
             imagepath: "assets/images/alert.svg",
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
           );
         });
   }
 
   @override
+  void initState() {
+    checkFirstRun();
+    controller = TextEditingController();
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    print(SizeConfig.screenWidth);
     Future.delayed(Duration.zero, () {
-      if (firstinstall == "no") {
-        return showdialog(context);
-      }
+      if (showdialog) {
+        tipDialog(context);
+      } //show dialog if its first time use
     });
+
+    // print(MediaQuery.of(context).size.height *
+    //     MediaQuery.of(context).devicePixelRatio);
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -111,7 +121,9 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
           ),
           leading: IconButton(
               icon: SvgPicture.asset("assets/images/leadingarrowleft.svg"),
-              onPressed: () {}),
+              onPressed: () {
+                Get.back();
+              }),
           actions: [
             IconButton(
                 icon: SvgPicture.asset("assets/images/arrowleft.svg"),
@@ -119,8 +131,9 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
           ],
         ),
         body: Container(
+          constraints: BoxConstraints.expand(),
           alignment: Alignment.topCenter,
-          height: SizeConfig.blockSizeVertical * 100,
+          //   height: MediaQuery.of(context).size.height,
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -157,14 +170,6 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                       )
                     ],
                     color: Colors.white),
-
-                // child: ListView.builder(itemBuilder: (context, index) {
-                //   return DropDownButtons(
-                //     width: Get.width * 0.75,
-                //     dropdownvalue: statusOfCheckingAccount,
-                //     onChanged: (newvalue) {},
-                //   );
-                // }),
                 child: Column(
                   children: [
                     DropDownButtons(
@@ -199,8 +204,9 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                               selecteddurationInAMonth = newvalue;
                             });
                           },
-                          width: SizeConfig.blockSizeHorizontal * 37.5,
+                          width: SizeConfig.blockSizeHorizontal * 38.5,
                           //   margin: 33,
+                          marginLeft: 10,
                           selected: selecteddurationInAMonth,
                           dropdownvalue: durationInAMonth,
                         ),
@@ -216,7 +222,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                           },
                           // margin: 33,
                           selected: selectedPurpose,
-                          width: SizeConfig.blockSizeHorizontal * 37.5,
+                          width: SizeConfig.blockSizeHorizontal * 35.5,
                           dropdownvalue: purpose,
                         ),
                       ],
@@ -253,8 +259,9 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                     CreditScoringTextField(
                         subtitle: "Employment",
                         hint: "Since",
+                        controller: controller,
                         width: SizeConfig.blockSizeHorizontal * 80,
-                        initialValue: datepicked,
+                        //   initialValue: " ",
                         onTap: () async {
                           DateTime picked = await showDatePicker(
                             context: context,
@@ -265,6 +272,8 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                           print(picked);
                           setState(() {
                             datepicked = picked.toString();
+                            controller.text =
+                                picked.toUtc().toString().split(" ")[0];
                           });
                         },
                         marginleft: 15,
@@ -376,7 +385,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                           },
                           // margin: 33,
                           selected: selectedPurpose,
-                          width: SizeConfig.blockSizeHorizontal * 37.5,
+                          width: SizeConfig.blockSizeHorizontal * 35.5,
                           dropdownvalue: purpose,
                         ),
                       ],
@@ -403,9 +412,9 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                               selecteddurationInAMonth = newvalue;
                             });
                           },
-                          width: SizeConfig.blockSizeHorizontal * 37.5,
+                          width: SizeConfig.blockSizeHorizontal * 35.5,
                           //   margin: 33,
-                          margin: 20,
+                          marginLeft: 20,
                           selected: selecteddurationInAMonth,
                           dropdownvalue: durationInAMonth,
                         ),
@@ -421,7 +430,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                           },
                           // margin: 33,
                           selected: selectedPurpose,
-                          width: SizeConfig.blockSizeHorizontal * 37.5,
+                          width: SizeConfig.blockSizeHorizontal * 35.5,
                           dropdownvalue: purpose,
                         ),
                       ],
@@ -465,14 +474,18 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   color: CustomColors.blue,
-                  onPressed: () {
-                    Get.off(() => NotComputed());
+                  onPressed: () async {
+                    preferences = await SharedPreferences.getInstance();
+                    setState(() {
+                      preferences.setBool("computed", true);
+                    });
+                    Get.to(() => Home());
                   },
                   child: Container(
                     alignment: Alignment.center,
                     child: Text(
                       "compute",
-                      style: TextStyle(color: CustomColors.white),
+                      style: TextStyle(color: CustomColors.white, fontSize: 18),
                     ),
                   ),
                 ),
