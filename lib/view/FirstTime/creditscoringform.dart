@@ -62,6 +62,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
       showdialog = true;
 
       preferences.setString("installedcredit", "installed");
+      // showdialog = false;
     }
   }
 
@@ -97,6 +98,8 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
     Future.delayed(Duration.zero, () {
       if (showdialog) {
         tipDialog(context);
+        showdialog = false;
+        return;
       } //show dialog if its first time use
     });
 
@@ -270,11 +273,10 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                             lastDate: DateTime.now(),
                           );
                           print(picked);
-                          setState(() {
-                            datepicked = picked.toString();
-                            controller.text =
-                                picked.toUtc().toString().split(" ")[0];
-                          });
+                          // setState(() {
+                          datepicked = picked.toString();
+                          controller.text = picked.toString().split(" ")[0];
+                          // });
                         },
                         marginleft: 15,
                         icon: IconButton(

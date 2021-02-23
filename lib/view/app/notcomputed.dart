@@ -282,19 +282,19 @@ class _NotComputedState extends State<NotComputed>
               icon: SvgPicture.asset("assets/images/menuitem2.svg"),
               title: Padding(
                 padding: const EdgeInsets.only(left: 18.0, bottom: 2),
-                child: Text("Page 2"),
+                child: Text("Credit"),
               )),
           BottomNavyBarItem(
               icon: SvgPicture.asset("assets/images/menuitem3.svg"),
               title: Padding(
                 padding: const EdgeInsets.only(left: 18.0, bottom: 2),
-                child: Text("Page 3"),
+                child: Text("Money"),
               )),
           BottomNavyBarItem(
               icon: SvgPicture.asset("assets/images/menuitem4.svg"),
               title: Padding(
                 padding: const EdgeInsets.only(left: 18.0, bottom: 2),
-                child: Text("Page 4"),
+                child: Text("Account"),
               )),
         ],
       ),
