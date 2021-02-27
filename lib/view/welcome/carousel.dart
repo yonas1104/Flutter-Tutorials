@@ -37,7 +37,7 @@ class _CarouselState extends State<Carousel> {
             boxShadow: [
               BoxShadow(
                 offset: Offset(-20, 0),
-                color: CustomColors.lightpurple,
+                color: CustomColors.lightpurple2,
               )
             ],
             color: CustomColors.blue,

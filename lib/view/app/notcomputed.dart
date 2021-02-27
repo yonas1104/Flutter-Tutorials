@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ligmone/SizeConfig.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/FirstTime/creditscoringform.dart';
+import 'package:ligmone/view/FirstTime/registerationsuccess.dart';
 import 'package:ligmone/view/app/components/bankcampiagns.dart';
 import 'package:ligmone/view/app/components/gettingstarted.dart';
 
@@ -258,7 +259,9 @@ class _NotComputedState extends State<NotComputed>
                         )),
                   )
                 : Home(),
-            Transaction()
+            Transaction(),
+            Transaction(),
+            RegistrationSuccess(),
 
             //transaction graph page
           ],

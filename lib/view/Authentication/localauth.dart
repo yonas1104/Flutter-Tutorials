@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/Authentication/components/numberbutton.dart';
 import 'package:ligmone/view/FirstTime/registerationsuccess.dart';
+import 'package:ligmone/view/app/notcomputed.dart';
 
 class LocalAuth extends StatefulWidget {
   @override
@@ -21,6 +22,7 @@ class _LocalAuthState extends State<LocalAuth> {
 
   @override
   Widget build(BuildContext context) {
+    //   do {} while (number == 4);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -219,7 +221,7 @@ class _LocalAuthState extends State<LocalAuth> {
                 NumberButton(
                   number: "0",
                   onPressed: () {
-                    Get.off(() => RegistrationSuccess());
+                    Get.off(() => NotComputed());
                     if (number < 4) {
                       setState(() {
                         code = code + 0.toString();

@@ -6,6 +6,7 @@ import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/App/notcomputed.dart';
 import 'package:ligmone/view/FirstTime/components/dropdownbuttons.dart';
 import 'package:ligmone/view/app/home.dart';
+import 'package:ligmone/view/app/notcomputed.dart' as n;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../alertdialog.dart';
@@ -99,13 +100,8 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
       if (showdialog) {
         tipDialog(context);
         showdialog = false;
-        return;
-      } //show dialog if its first time use
+      }
     });
-
-    // print(MediaQuery.of(context).size.height *
-    //     MediaQuery.of(context).devicePixelRatio);
-
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -481,7 +477,7 @@ class _CreditScoringFormState extends State<CreditScoringForm> {
                     setState(() {
                       preferences.setBool("computed", true);
                     });
-                    Get.to(() => Home());
+                    Get.to(() => n.NotComputed());
                   },
                   child: Container(
                     alignment: Alignment.center,

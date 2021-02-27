@@ -93,6 +93,7 @@ class _LoanCriteriaCalculatorState extends State<LoanCriteriaCalculator> {
     Future.delayed(Duration.zero, () {
       if (showdialog) {
         tipDialog(context);
+        showdialog = false;
       } //show dialog if its first time use
     });
 

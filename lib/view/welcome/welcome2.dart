@@ -56,7 +56,7 @@ class _Welcome2State extends State<Welcome2> {
                 boxShadow: [
                   BoxShadow(
                     offset: Offset(-25, 0),
-                    color: CustomColors.lightpurple,
+                    color: CustomColors.lightpurple2,
                   )
                 ],
                 color: CustomColors.blue,
