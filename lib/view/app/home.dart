@@ -1,12 +1,8 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:ligmone/constants/Colors.dart';
 import 'package:ligmone/view/app/components/Guage.dart';
 import 'package:ligmone/view/app/components/services.dart';
 import 'package:ligmone/view/app/components/suggestions.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 //Home page of the app
 

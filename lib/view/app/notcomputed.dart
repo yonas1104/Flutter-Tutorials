@@ -13,6 +13,7 @@ import 'package:ligmone/view/app/components/typesofloans.dart';
 import 'package:ligmone/view/app/components/updatedpolicies.dart';
 import 'package:ligmone/view/app/home.dart';
 import 'package:ligmone/view/app/transaction.dart';
+import 'package:ligmone/view/store/store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'loancritriacalculator.dart';
@@ -260,7 +261,9 @@ class _NotComputedState extends State<NotComputed>
                   )
                 : Home(),
             Transaction(),
+            Store(),
             Transaction(),
+
             RegistrationSuccess(),
 
             //transaction graph page
@@ -286,6 +289,15 @@ class _NotComputedState extends State<NotComputed>
               title: Padding(
                 padding: const EdgeInsets.only(left: 18.0, bottom: 2),
                 child: Text("Credit"),
+              )),
+          BottomNavyBarItem(
+              icon: SvgPicture.asset(
+                "assets/images/store.svg",
+                height: 30,
+              ),
+              title: Padding(
+                padding: const EdgeInsets.only(left: 2.0, bottom: 2),
+                child: Text("Store"),
               )),
           BottomNavyBarItem(
               icon: SvgPicture.asset("assets/images/menuitem3.svg"),

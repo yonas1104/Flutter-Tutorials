@@ -5,6 +5,9 @@ class CustomColors {
 
   static const pink = const Color(0xFFFD387A);
   static const skyblue = const Color(0xFF06DEF9);
+
+  static const servicesbackground = const Color(0xFFD6DAF0);
+  static const pending = const Color(0xFFF99806);
   static const yellow = const Color(0xFFF9CF06);
   static const darkgray = const Color(0xFF4E4E4E);
   static const lightpurple = const Color(0xFFB5BBEF);
